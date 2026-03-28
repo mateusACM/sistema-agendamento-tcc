@@ -11,18 +11,15 @@ const PORT = 3000; // Porta onde o servidor vai rodar
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// ========================================
 // ROTAS DO CRUD
-// ========================================
 
-// 🏠 ROTA INICIAL (teste)
+//  ROTA INICIAL (teste)
 app.get('/', (req, res) => {
     res.send(' Servidor funcionando! Sistema de Agendamento ativo.');
 });
 
-// ========================================
-// CREATE - Criar novo agendamento
-// ========================================
+//  Criar novo agendamento
+
 app.post('/agendamentos', (req, res) => {
     const { nome_cliente, servico, data, horario, telefone } = req.body;
 
@@ -48,9 +45,8 @@ app.post('/agendamentos', (req, res) => {
     });
 });
 
-// ========================================
-// READ - Listar todos os agendamentos
-// ========================================
+// READ - Lista todos os agendamentos
+
 app.get('/agendamentos', (req, res) => {
     const sql = 'SELECT * FROM agendamentos';
 
@@ -66,9 +62,8 @@ app.get('/agendamentos', (req, res) => {
     });
 });
 
-// ========================================
-// READ - Buscar agendamento por ID
-// ========================================
+// Buscar agendamento por ID
+
 app.get('/agendamentos/:id', (req, res) => {
     const { id } = req.params;
     const sql = 'SELECT * FROM agendamentos WHERE id = ?';
@@ -84,9 +79,8 @@ app.get('/agendamentos/:id', (req, res) => {
     });
 });
 
-// ========================================
-// UPDATE - Atualizar agendamento
-// ========================================
+// Atualizar agendamento
+
 app.put('/agendamentos/:id', (req, res) => {
     const { id } = req.params;
     const { nome_cliente, servico, data, horario, telefone, status } = req.body;
@@ -106,9 +100,9 @@ app.put('/agendamentos/:id', (req, res) => {
     });
 });
 
-// ========================================
-// DELETE - Deletar agendamento
-// ========================================
+
+//  Deletar agendamento
+
 app.delete('/agendamentos/:id', (req, res) => {
     const { id } = req.params;
     const sql = 'DELETE FROM agendamentos WHERE id = ?';
@@ -124,9 +118,8 @@ app.delete('/agendamentos/:id', (req, res) => {
     });
 });
 
-// ========================================
 // Inicia o servidor
-// ========================================
+
 app.listen(PORT, () => {
     console.log(` Servidor rodando em http://localhost:${PORT}`);
     console.log(` Acesse http://localhost:${PORT}/agendamentos para ver os dados`);
