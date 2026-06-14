@@ -11,9 +11,9 @@ const PORT = 3000; // Porta onde o servidor vai rodar
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+// ========================================
 // FUNÇÕES DE VALIDAÇÃO
-
+// ========================================
 
 // Valida formato de data (YYYY-MM-DD)
 function validarData(data) {
@@ -47,11 +47,11 @@ function validarTelefone(telefone) {
     return numeros.length >= 10 && numeros.length <= 11;
 }
 
-
+// ========================================
 // ROTAS DO CRUD
+// ========================================
 
-
-//  ROTA INICIAL (teste)
+// 🏠 ROTA INICIAL (teste)
 app.get('/', (req, res) => {
     res.send('🚀 Servidor funcionando! Sistema de Agendamento ativo.');
 });
@@ -133,9 +133,9 @@ app.post('/agendamentos', (req, res) => {
     });
 });
 
-
+// ========================================
 // READ - Listar todos os agendamentos
-
+// ========================================
 app.get('/agendamentos', (req, res) => {
     const sql = 'SELECT * FROM agendamentos ORDER BY data, horario';
 
@@ -151,9 +151,9 @@ app.get('/agendamentos', (req, res) => {
     });
 });
 
-
+// ========================================
 // READ - Buscar agendamento por ID
-
+// ========================================
 app.get('/agendamentos/:id', (req, res) => {
     const { id } = req.params;
     const sql = 'SELECT * FROM agendamentos WHERE id = ?';
@@ -169,9 +169,9 @@ app.get('/agendamentos/:id', (req, res) => {
     });
 });
 
-
+// ========================================
 // READ - Buscar agendamentos por data
-
+// ========================================
 app.get('/agendamentos/data/:data', (req, res) => {
     const { data } = req.params;
     
@@ -196,9 +196,9 @@ app.get('/agendamentos/data/:data', (req, res) => {
     });
 });
 
-
-// UPDATE - Atualizar agendamento 
-
+// ========================================
+// UPDATE - Atualizar agendamento (COM VALIDAÇÕES!)
+// ========================================
 app.put('/agendamentos/:id', (req, res) => {
     const { id } = req.params;
     const { nome_cliente, servico, data, horario, telefone, status } = req.body;
@@ -265,7 +265,7 @@ app.put('/agendamentos/:id', (req, res) => {
                 return res.status(404).json({ erro: 'Agendamento não encontrado' });
             }
             res.json({ 
-                mensagem: ' Agendamento atualizado com sucesso!',
+                mensagem: '✅ Agendamento atualizado com sucesso!',
                 detalhes: {
                     id,
                     nome_cliente,
@@ -278,8 +278,9 @@ app.put('/agendamentos/:id', (req, res) => {
     });
 });
 
+// ========================================
 // DELETE - Deletar agendamento
-
+// ========================================
 app.delete('/agendamentos/:id', (req, res) => {
     const { id } = req.params;
     const sql = 'DELETE FROM agendamentos WHERE id = ?';
@@ -298,10 +299,11 @@ app.delete('/agendamentos/:id', (req, res) => {
     });
 });
 
-
+// ========================================
 // Inicia o servidor
-
+// ========================================
 app.listen(PORT, () => {
-    console.log(` Servidor rodando em http://localhost:${PORT}`);
-    console.log(` Acesse http://localhost:${PORT}/agendamentos para ver os dados`);
+    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
+    console.log(`📋 Acesse http://localhost:${PORT}/agendamentos para ver os dados`);
+    console.log(`✅ Sistema com validações ativadas!`);
 });
