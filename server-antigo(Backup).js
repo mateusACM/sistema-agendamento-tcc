@@ -11,48 +11,6 @@ const PORT = 3000; // Porta onde o servidor vai rodar
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-<<<<<<< HEAD
-// ========================================
-// FUNÇÕES DE VALIDAÇÃO
-// ========================================
-
-// Valida formato de data (YYYY-MM-DD)
-function validarData(data) {
-    const regex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!regex.test(data)) return false;
-    
-    const date = new Date(data);
-    return date instanceof Date && !isNaN(date);
-}
-
-// Valida formato de horário (HH:MM)
-function validarHorario(horario) {
-    const regex = /^([0-1][0-9]|2[0-3]):([0-5][0-9])$/;
-    return regex.test(horario);
-}
-
-// Valida se a data não é no passado
-function validarDataFutura(data) {
-    const hoje = new Date();
-    hoje.setHours(0, 0, 0, 0); // Zera as horas para comparar só a data
-    
-    const dataAgendamento = new Date(data);
-    return dataAgendamento >= hoje;
-}
-
-// Valida telefone (mínimo 10 dígitos)
-function validarTelefone(telefone) {
-    if (!telefone) return true; // Telefone é opcional
-    
-    const numeros = telefone.replace(/\D/g, ''); // Remove tudo que não é número
-    return numeros.length >= 10 && numeros.length <= 11;
-}
-
-// ========================================
-// ROTAS DO CRUD
-// ========================================
-=======
->>>>>>> 86272bf6161134f781daead0c1a3b8ee711d3d57
 
 // FUNÇÕES DE VALIDAÇÃO
 
@@ -95,7 +53,7 @@ function validarTelefone(telefone) {
 
 //  ROTA INICIAL (teste)
 app.get('/', (req, res) => {
-    res.send('🚀 Servidor funcionando! Sistema de Agendamento ativo.');
+    res.send(' Servidor funcionando Sistema de Agendamento ativo.');
 });
 
 // ========================================
@@ -162,7 +120,7 @@ app.post('/agendamentos', (req, res) => {
                 return res.status(500).json({ erro: err.message });
             }
             res.status(201).json({ 
-                mensagem: '✅ Agendamento criado com sucesso!',
+                mensagem: ' Agendamento criado com sucesso!',
                 id: this.lastID,
                 detalhes: {
                     nome_cliente,
@@ -211,15 +169,9 @@ app.get('/agendamentos/:id', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-// ========================================
-// READ - Buscar agendamentos por data
-// ========================================
-=======
 
 // READ - Buscar agendamentos por data
 
->>>>>>> 86272bf6161134f781daead0c1a3b8ee711d3d57
 app.get('/agendamentos/data/:data', (req, res) => {
     const { data } = req.params;
     
@@ -244,15 +196,9 @@ app.get('/agendamentos/data/:data', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-// ========================================
-// UPDATE - Atualizar agendamento (COM VALIDAÇÕES!)
-// ========================================
-=======
 
 // UPDATE - Atualizar agendamento 
 
->>>>>>> 86272bf6161134f781daead0c1a3b8ee711d3d57
 app.put('/agendamentos/:id', (req, res) => {
     const { id } = req.params;
     const { nome_cliente, servico, data, horario, telefone, status } = req.body;
@@ -319,11 +265,7 @@ app.put('/agendamentos/:id', (req, res) => {
                 return res.status(404).json({ erro: 'Agendamento não encontrado' });
             }
             res.json({ 
-<<<<<<< HEAD
-                mensagem: '✅ Agendamento atualizado com sucesso!',
-=======
                 mensagem: ' Agendamento atualizado com sucesso!',
->>>>>>> 86272bf6161134f781daead0c1a3b8ee711d3d57
                 detalhes: {
                     id,
                     nome_cliente,
@@ -350,7 +292,7 @@ app.delete('/agendamentos/:id', (req, res) => {
             return res.status(404).json({ erro: 'Agendamento não encontrado' });
         }
         res.json({ 
-            mensagem: '✅ Agendamento deletado com sucesso!',
+            mensagem: ' Agendamento deletado com sucesso!',
             id_deletado: id
         });
     });
@@ -360,12 +302,6 @@ app.delete('/agendamentos/:id', (req, res) => {
 // Inicia o servidor
 
 app.listen(PORT, () => {
-<<<<<<< HEAD
-    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
-    console.log(`📋 Acesse http://localhost:${PORT}/agendamentos para ver os dados`);
-    console.log(`✅ Sistema com validações ativadas!`);
-=======
     console.log(` Servidor rodando em http://localhost:${PORT}`);
     console.log(` Acesse http://localhost:${PORT}/agendamentos para ver os dados`);
->>>>>>> 86272bf6161134f781daead0c1a3b8ee711d3d57
 });

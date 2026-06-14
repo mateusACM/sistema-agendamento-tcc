@@ -23,9 +23,9 @@ db.run(`
     )
 `, (err) => {
     if (err) {
-        console.error('❌ Erro ao criar tabela:', err.message);
+        console.error(' Erro ao criar tabela:', err.message);
     } else {
-        console.log('✅ Tabela "agendamentos" pronta!');
+        console.log(' Tabela "agendamentos" pronta!');
     }
 });
 
