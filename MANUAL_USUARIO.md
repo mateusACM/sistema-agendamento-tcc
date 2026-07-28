@@ -46,7 +46,7 @@ Você deve ver:
 ```
 ✅ Conectado ao banco de dados SQLite
 ✅ Tabela "agendamentos" pronta!
-🚀 Servidor rodando em http://localhost:3000
+ Servidor rodando em http://localhost:3000
 ```
 
 ---
