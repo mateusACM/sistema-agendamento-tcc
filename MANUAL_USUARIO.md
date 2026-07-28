@@ -59,7 +59,7 @@ Você deve ver:
 |-------|------------|---------|---------|
 | Nome do Cliente | ✅ Sim | Texto | João Silva |
 | Serviço | ✅ Sim | Texto | Corte de Cabelo |
-| Data | ✅ Sim | YYYY-MM-DD | 2024-04-20 |
+| Data | ✅ Sim | YYYY-MM-DD | 2026-04-20 |
 | Horário | ✅ Sim | HH:MM | 14:30 |
 | Telefone | ❌ Não | 10-11 dígitos | (11) 98765-4321 |
 
@@ -106,7 +106,7 @@ Todos os agendamentos aparecem em uma tabela com:
 
 ### Data Não Pode Ser no Passado
 - ❌ Data: 2020-01-01 → ERRO
-- ✅ Data: 2024-04-25 → OK
+- ✅ Data: 2026-04-25 → OK
 
 ### Não Pode Ter Horários Duplicados
 - ❌ João 20/04 14:00 + Maria 20/04 14:00 → ERRO
